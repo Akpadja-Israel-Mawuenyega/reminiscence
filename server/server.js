@@ -4,14 +4,14 @@ import cors from "cors";
 import mongoose from "mongoose";
 import posts from "./routes/posts.js";
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
 // express instance
 const app = express();
 
 // mongoose
 const CONNECTION_URL =
-  "mongodb+srv://drimmaculate147:johnwick9@cluster0.tgpoq.mongodb.net/";
+  "mongodb+srv://drimmaculate147:johnwick9@cluster0.tgpoq.mongodb.net/reminiscence";
 
 mongoose
   .connect(CONNECTION_URL)

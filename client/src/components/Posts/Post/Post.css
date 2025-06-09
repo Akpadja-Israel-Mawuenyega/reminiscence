@@ -1,0 +1,71 @@
+.image-container {
+  position: relative;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.overlay-left {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.more-options-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  cursor: pointer;
+  width: 40px;
+  top: 5px;
+  right: 18px;
+  padding: 5px;
+  transition: background-color 0.01s ease;
+}
+
+.more-options-button.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+

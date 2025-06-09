@@ -3,6 +3,7 @@ import {
   getPosts,
   getPost,
   createPost,
+  updatePost,
 } from "../controllers/postController.js";
 const router = express.Router();
 
@@ -14,5 +15,8 @@ router.get("/:id", getPost);
 
 // create post route
 router.post("/", createPost);
+
+// update post
+router.patch("/:id", updatePost);
 
 export default router;

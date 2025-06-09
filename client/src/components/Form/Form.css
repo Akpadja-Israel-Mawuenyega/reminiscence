@@ -1,0 +1,64 @@
+.post-form {
+  background-color: white;
+}
+
+.title-label,
+.message-label,
+.creator-label {
+  opacity: 0.8;
+}
+
+.title-input,
+.message-input,
+.creator-input {
+  border: 1px solid rgb(48, 47, 47);
+  border-radius: 8px;
+  padding: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.title-input,
+.message-input,
+.creator-input {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title-input:focus,
+.message-input:focus,
+.tag-input:focus,
+.creator-input:focus {
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
+  border-color: rgb(67, 155, 250);
+  outline: none;
+}
+
+.tag-input-container {
+  position: relative;
+  border: none;
+  border-radius: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.tag-remove-button {
+  margin-left: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+
+.tag-input {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid rgb(48, 47, 47);
+  border-radius: 8px;
+}
+
