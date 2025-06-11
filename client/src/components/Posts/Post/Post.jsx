@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { deletePost } from "../../../actions/actions";
+import { useDispatch } from "react-redux";
+import { deletePost, likePost } from "../../../actions/actions";
 import deleteGif from "../../../assets/delete.gif";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
-import moment from "moment";
+import moment from "moment"; 
 import { MdDelete } from "react-icons/md";
 import { BiSolidLike } from "react-icons/bi";
 import "./Post.css";
 
 const Post = ({ post, setCurrentId }) => {
   const [showBackground, setShowBackground] = useState(false);
+  const [isDeletingPost, setIsDeletingPost] = useState(false);
   const dispatch = useDispatch();
-  const { isDeleting } = useSelector((state) => state.posts);
 
   const handleMoreOptionsClick = () => {
     setShowBackground(true);
@@ -22,15 +22,23 @@ const Post = ({ post, setCurrentId }) => {
     setCurrentId(post._id);
   };
 
-  const onLike = (id) => {};
+  const onLike = (id) => {
+    dispatch(likePost(id));
+  };
 
   const onDelete = (id) => {
-    dispatch(deletePost(id));
+    setIsDeletingPost(true);
+    try {
+      dispatch(deletePost(id));
+    } catch (error) {
+      console.error("Failed to delete post:", error);
+      setIsDeletingPost(false);
+    }
   };
 
   const parallelogramClipPath = "polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)";
 
-  if (isDeleting) {
+  if (isDeletingPost) {
     return <img src={deleteGif} alt="Deleting..." />;
   }
 
@@ -56,6 +64,14 @@ const Post = ({ post, setCurrentId }) => {
               &#x2022;&#x2022;&#x2022;
             </button>
           </div>
+          {/* Like Count Overlay */}
+          {!post.likeCount ? (
+            " "
+          ) : (
+            <div className="absolute bottom-0 right-0 p-2 text-white bg-black bg-opacity-50 rounded-tl-lg text-sm font-bold">
+              {post.likeCount} {post.likeCount > 1 ? "Likes" : "Like"}
+            </div>
+          )}
         </div>
       </div>
 

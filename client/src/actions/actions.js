@@ -1,4 +1,10 @@
-import { fetchPosts, createAPost, updateAPost, deleteAPost } from "../api/api";
+import {
+  fetchPosts,
+  createAPost,
+  updateAPost,
+  deleteAPost,
+  likeAPost,
+} from "../api/api";
 
 // Action creators
 export const getPosts = () => async (dispatch) => {
@@ -53,5 +59,15 @@ export const deletePost = (id) => async (dispatch) => {
     console.log(error);
 
     dispatch({ type: "DELETE_FAILURE", payload: error.message });
+  }
+};
+
+export const likePost = (id) => async (dispatch) => {
+  try {
+    const { data } = await likeAPost(id);
+
+    dispatch({ type: "LIKE_SUCCESS", payload: data });
+  } catch (error) {
+    console.log(error);
   }
 };

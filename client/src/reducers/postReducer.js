@@ -41,6 +41,23 @@ const postsReducer = (state = initialState, action) => {
     case "UPDATE_FAILURE": {
       return { ...state, isUpdating: false };
     }
+    case "LIKE_SUCCESS": {
+      let liked = false;
+      const likedPosts = state.posts.map((post) => {
+        if (post._id === action.payload._id) {
+          if (post.likeCount !== action.payload.likeCount) {
+            liked = true;
+            return { ...post, likeCount: action.payload.likeCount };
+          }
+          return post;
+        }
+        return post;
+      });
+      return {
+        ...state,
+        posts: liked ? likedPosts : state.posts,
+      };
+    }
     case "DELETE_REQUEST": {
       return { ...state, isDeleting: true };
     }
