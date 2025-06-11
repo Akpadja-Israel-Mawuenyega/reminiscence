@@ -1,16 +1,55 @@
-const postReducer = (posts = [], action) => {
+// reducers/posts.js
+const initialState = {
+  posts: [],
+  isLoading: true,
+  isCreating: false,
+  isUpdating: false,
+  isDeleting: false,
+};
+
+const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_ALL":
-      return action.payload;
-    case "CREATE":
-      return [...posts, action.payload];
-    case "UPDATE":
-      return posts.map((post) =>
-        post._id == action.payload._id ? action.payload : post
-      );
+    case "FETCH_REQUEST":
+      return { ...state, isLoading: true };
+    case "FETCH_SUCCESS":
+      return { ...state, posts: action.payload, isLoading: false };
+    case "FETCH_FAILURE":
+      return { ...state, isLoading: false };
+    case "CREATE_REQUEST": {
+      return { ...state, isCreating: true };
+    }
+    case "CREATE_SUCCESS":
+      return { ...state, posts: [...state.posts, action.payload] };
+    case "CREATE_FAILURE": {
+      return { ...state, isCreating: false };
+    }
+    case "UPDATE_REQUEST": {
+      return { ...state, isUpdating: true };
+    }
+    case "UPDATE_SUCCESS":
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === action.payload._id ? action.payload : post
+        ),
+      };
+    case "UPDATE_FAILURE": {
+      return { ...state, isUpdating: false };
+    }
+    case "DELETE_REQUEST": {
+      return { ...state, isDeleting: true };
+    }
+    case "DELETE_SUCCESS":
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== action.payload),
+      };
+    case "DELETE_FAILURE": {
+      return { ...state, isDeleting: false };
+    }
     default:
-      return posts;
+      return state;
   }
 };
 
-export default postReducer;
+export default postsReducer;

@@ -20,10 +20,10 @@ function App() {
     <div className="app">
       <Header />
       <div className="flex justify-between p-4">
-        <div className="flex-1 mr-4 border border-gray-300 rounded-lg shadow-md p-4">
+        <div className="flex-1 mr-4 border  rounded-lg p-4 bg-white/80">
           <Posts setCurrentId={setCurrentId} />
         </div>
-        <div className="w-1/2 border border-gray-300 rounded-lg shadow-md p-4 bg-white">
+        <div className="w-1/2 border border-gray-300 rounded-lg p-4 bg-white">
           <Form currentId={currentId} setCurrentId={setCurrentId} />
         </div>
       </div>

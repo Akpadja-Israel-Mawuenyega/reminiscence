@@ -15,7 +15,7 @@ const CONNECTION_URL =
 
 mongoose
   .connect(CONNECTION_URL)
-  .then(() => console.log("Connected to database!"))
+  .then(() => console.log("Connected to database!")) 
   .catch((err) => console.log(err));
 
 // body parser
