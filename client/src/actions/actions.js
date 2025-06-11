@@ -11,7 +11,7 @@ export const getPosts = () => async (dispatch) => {
   } catch (error) {
     console.log(error);
 
-    dispatch({ type: "FETCH_FAILURE", payload: error });
+    dispatch({ type: "FETCH_FAILURE", payload: error.message });
   }
 };
 
@@ -25,7 +25,7 @@ export const createPost = (newPost) => async (dispatch) => {
   } catch (error) {
     console.log(error);
 
-    dispatch({ type: "CREATE_FAILURE", payload: error });
+    dispatch({ type: "CREATE_FAILURE", payload: error.message });
   }
 };
 
@@ -39,7 +39,7 @@ export const updatePost = (id, post) => async (dispatch) => {
   } catch (error) {
     console.log(error);
 
-    dispatch({ type: "UPDATE_FAILURE", payload: error });
+    dispatch({ type: "UPDATE_FAILURE", payload: error.message });
   }
 };
 
@@ -52,6 +52,6 @@ export const deletePost = (id) => async (dispatch) => {
   } catch (error) {
     console.log(error);
 
-    dispatch({ type: "DELETE_FAILURE", payload: error });
+    dispatch({ type: "DELETE_FAILURE", payload: error.message });
   }
 };

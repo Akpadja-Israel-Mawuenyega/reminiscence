@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
+import loadingGif from "../../assets/loading.gif";
+import nothingGif from "../../assets/nothing.gif";
 import "./Posts.css";
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 import Post from "./Post/Post";
 
 const Posts = ({ setCurrentId }) => {
-  const { posts, isLoading } = useSelector((state) => state.posts);
+  const { posts, isLoading } = useSelector(
+    (state) => state.posts,
+    shallowEqual
+  );
+
+  const memoizedSetCurrentId = useCallback(
+    (id) => {
+      setCurrentId(id);
+    },
+    [setCurrentId]
+  );
 
   console.log(posts);
 
   return (
     <>
       {isLoading ? (
-        <div className="text-center">Loading...</div>
+        <img src={loadingGif} alt="Loading posts..." />
       ) : (
         <div className="posts">
           {!posts.length ? (
-            <div className="text-center">No posts to show.</div>
+            <div className="flex justify-center items-center">
+              <h2>No posts to show.</h2>
+              <img src={nothingGif} alt="There is nothing is here." />
+            </div>
           ) : (
             posts.map((post) => (
               <React.Fragment key={post._id}>
                 <div className="flex justify-center items-center">
-                  <Post post={post} setCurrentId={setCurrentId} />
+                  <Post post={post} setCurrentId={memoizedSetCurrentId} />
                 </div>
                 <br />
               </React.Fragment>

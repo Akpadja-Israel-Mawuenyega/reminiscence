@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../../../actions/actions";
+import deleteGif from "../../../assets/delete.gif";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 import moment from "moment";
@@ -29,10 +30,14 @@ const Post = ({ post, setCurrentId }) => {
 
   const parallelogramClipPath = "polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)";
 
+  if (isDeleting) {
+    return <img src={deleteGif} alt="Deleting..." />;
+  }
+
   return (
     <Card style={{ width: "18rem" }}>
       <div className="image-container" style={{ position: "relative" }}>
-        <Card.Img variant="top" src={post.selectedFile || } />
+        <Card.Img variant="top" src={post.selectedFile} />
         <div className="image-overlay">
           <div className="overlay-content">
             <div className="overlay-left">
@@ -115,7 +120,7 @@ const Post = ({ post, setCurrentId }) => {
               style={{ clipPath: parallelogramClipPath }}
               onClick={() => onDelete(post._id)}
             >
-              {isDeleting ? "Deleting" : "Delete"}{" "}
+              Delete
               <span className="ml-1 mt-0.5 text-lg">
                 <MdDelete />
               </span>

@@ -19,7 +19,11 @@ const postsReducer = (state = initialState, action) => {
       return { ...state, isCreating: true };
     }
     case "CREATE_SUCCESS":
-      return { ...state, posts: [...state.posts, action.payload] };
+      return {
+        ...state,
+        posts: [...state.posts, action.payload],
+        isCreating: false,
+      };
     case "CREATE_FAILURE": {
       return { ...state, isCreating: false };
     }
@@ -32,6 +36,7 @@ const postsReducer = (state = initialState, action) => {
         posts: state.posts.map((post) =>
           post._id === action.payload._id ? action.payload : post
         ),
+        isUpdating: false,
       };
     case "UPDATE_FAILURE": {
       return { ...state, isUpdating: false };
@@ -43,6 +48,7 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: state.posts.filter((post) => post._id !== action.payload),
+        isDeleting: false,
       };
     case "DELETE_FAILURE": {
       return { ...state, isDeleting: false };
