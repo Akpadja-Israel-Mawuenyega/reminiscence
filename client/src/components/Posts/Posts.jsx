@@ -28,9 +28,13 @@ const Posts = ({ setCurrentId }) => {
       ) : (
         <div className="posts">
           {!posts.length ? (
-            <div className="flex justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
               <h2>No posts to show.</h2>
-              <img src={nothingGif} alt="There is nothing is here." />
+              <img
+                src={nothingGif}
+                alt="There is nothing is here."
+                className="w-4/5 h-4/5 object-contain mx-auto rounded md mt-4"
+              />
             </div>
           ) : (
             posts.map((post) => (

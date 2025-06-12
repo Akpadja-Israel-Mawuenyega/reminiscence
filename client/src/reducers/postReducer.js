@@ -1,7 +1,7 @@
 // reducers/posts.js
 const initialState = {
   posts: [],
-  isLoading: true,
+  isLoading: false,
   isCreating: false,
   isUpdating: false,
   isDeleting: false,

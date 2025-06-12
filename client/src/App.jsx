@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "./components/Form/Form";
@@ -11,6 +11,8 @@ function App() {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
   const formRef = useRef(null);
+
+  const { posts, isLoading } = useSelector((state) => state.posts);
 
   const scrollToForm = () => {
     if (formRef.current) {
@@ -29,14 +31,16 @@ function App() {
         <div className="w-full md:flex-1 border rounded-lg p-4 bg-white/80">
           <Posts setCurrentId={setCurrentId} />
           {/* Scroll to form button - visible on small screens only */}
-          <div className="fixed bottom-4 right-4 md:hidden z-50">
-            <button
-              onClick={scrollToForm}
-              className="bg-black hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg"
-            >
-              Scroll to form
-            </button>
-          </div>
+          {!isLoading && posts && posts.length > 0 && (
+            <div className="fixed bottom-4 right-4 md:hidden z-50">
+              <button
+                onClick={scrollToForm}
+                className="bg-black hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg"
+              >
+                Scroll to form
+              </button>
+            </div>
+          )}
         </div>
         <div
           ref={formRef}
