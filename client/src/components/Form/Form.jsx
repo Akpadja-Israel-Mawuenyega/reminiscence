@@ -21,7 +21,7 @@ import food_1 from "../../default_images/food_1.jpg";
 import food_2 from "../../default_images/food_2.jpg";
 import food_3 from "../../default_images/food_3.webp";
 import travel_1 from "../../default_images/travel_1.jpg";
-import travel_2 from "../../default_images/travel_2.jpg";
+import travel_2 from "../../default_images/travel_2.jpg"; 
 import travel_3 from "../../default_images/travel_3.avif";
 import music_1 from "../../default_images/music_1.jpg";
 import music_2 from "../../default_images/music_2.jpg";
