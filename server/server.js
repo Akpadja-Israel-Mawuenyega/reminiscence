@@ -2,20 +2,21 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import posts from "./routes/posts.js";
-
-const port = process.env.PORT || 8000;
 
 // express instance
 const app = express();
 
-// mongoose
-const CONNECTION_URL =
-  "mongodb+srv://drimmaculate147:johnwick9@cluster0.tgpoq.mongodb.net/reminiscence";
+dotenv.config();
 
+const port = process.env.PORT;
+const CONNECTION_URL = process.env.CONNECTION_URL;
+
+// mongoose
 mongoose
   .connect(CONNECTION_URL)
-  .then(() => console.log("Connected to database!")) 
+  .then(() => console.log("Connected to database!"))
   .catch((err) => console.log(err));
 
 // body parser
