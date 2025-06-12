@@ -6,6 +6,7 @@ import {
   likeAPost,
 } from "../api/api";
 
+// import action type constants
 import {
   FETCH_REQUEST,
   FETCH_SUCCESS,
