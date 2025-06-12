@@ -24,7 +24,7 @@ app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 // cors instance
-app.use(cors());
+app.use(cors({ origin: "https://reminiscence-tkoy.onrender.com" }));
 
 // routes
 app.use("/posts", posts);

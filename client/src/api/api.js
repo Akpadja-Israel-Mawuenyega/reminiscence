@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:8000/posts";
+const url = "https://reminiscence-tkoy.onrender.com";
 
 export const fetchPosts = () => {
   return axios.get(url);
