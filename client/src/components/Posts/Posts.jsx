@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
-import loadingGif from "../../assets/loading.gif";
-import nothingGif from "../../assets/nothing.gif";
+import loadingGif from "../../../public/assets/loading.gif";
+import nothingGif from "../../../public/assets/nothing.gif";
 import "./Posts.css";
 import { useSelector, shallowEqual } from "react-redux";
 import Post from "./Post/Post";

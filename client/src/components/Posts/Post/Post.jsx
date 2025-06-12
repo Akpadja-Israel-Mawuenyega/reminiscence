@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/actions";
-import deleteGif from "../../../assets/delete.gif";
+import deleteGif from "../../../../public/assets/delete.gif";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 import moment from "moment"; 

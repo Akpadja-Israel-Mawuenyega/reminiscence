@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import "./Header.css";
-import image from "../../assets/memories.png";
+import image from "../../../public/assets/memories.png";
 
 const Header = () => {
   return (
